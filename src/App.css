@@ -1,38 +1,264 @@
-.App {
+/* =========================
+   Global Reset & Base
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+/* =========================
+   App Container
+========================= */
+.app {
+  max-width: 750px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   Header
+========================= */
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.header h3 {
+  font-size: 14px;
+  font-weight: normal;
+  color: #777;
+  margin-top: 6px;
+}
+
+/* =========================
+   Total Expense
+========================= */
+.total {
+  background: #eef4ff;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2563eb;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* =========================
+   Expense Form
+========================= */
+/* =========================
+   Expense Form – Improved UI
+========================= */
+.expense-form {
+  background: #f9fafb;
+  padding: 18px;
+  border-radius: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 8px 12px;
+  align-items: anchor-center;
+  margin-bottom: 28px;
+}
+
+/* Labels */
+.expense-form label {
+  text-align: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #555;
+  font-weight: 500;
+}
+
+/* Inputs & Select */
+.expense-form input,
+.expense-form select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  background: #ffffff;
+  width: 100%;
+}
+
+.expense-form input::placeholder {
+  color: #aaa;
+}
+
+.expense-form input:focus,
+.expense-form select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* Add Button */
+.expense-form button {
+  height: 44px;
+  padding: 0 22px;
+  background: #f63f0d;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: end;
+}
+
+.expense-form button:hover {
+  background: #1e4fd8;
+}
+
+/* =========================
+   Filter Header
+========================= */
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.filter h1 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.filter select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* =========================
+   Expense List
+========================= */
+.expense-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* =========================
+   Expense Card
+========================= */
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+  padding: 14px 16px;
+  border-radius: 10px;
+}
+
+.expense-item.food {
+  border-left: 5px solid #2563eb;
+}
+.expense-item.travel {
+  border-left: 5px solid #22f406;
+}
+.expense-item.grocery {
+  border-left: 5px solid #e0f70d;
+}
+.expense-item.other {
+  border-left: 5px solid #f57a07;
+}
+
+.expense-item p {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.expense-item div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.expense-item button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* =========================
+   Delete Button
+========================= */
+.delete-btn {
+  color: #dc2626;
+  margin-left: 15px;
+}
+
+.delete-btn:hover {
+  transform: scale(1.1);
+}
+
+/* =========================
+   Clear All
+========================= */
+.empty {
+  margin-top: 24px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.clear-btn {
+  padding: 10px 20px;
+  background: #dc2626;
   color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.clear-btn:hover {
+  background: #b91c1c;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* =========================
+   Responsive (Mobile)
+========================= */
+@media (max-width: 650px) {
+  .app {
+    margin: 20px;
+    padding: 20px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .expense-form {
+    grid-template-columns: 1fr;
+  }
+
+  .filter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .expense-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .expense-item div:last-child {
+    width: 100%;
+    justify-content: space-between;
   }
 }
